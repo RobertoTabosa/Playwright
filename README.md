@@ -9,8 +9,8 @@ git clone https://github.com/RobertoTabosa/Playwright.git
 Execute below command
 npm install
 
-To execute test
-npx playwright /e2e/filename
+**To execute test
+npx playwright /e2e/filename**
 ===========
 
 ==========
