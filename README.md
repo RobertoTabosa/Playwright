@@ -5,7 +5,7 @@ This repository contains a Playwright test project developed by Roberto Tabosa.
 ## Project Information
 
 - **Clone Repository:** `git clone https://github.com/RobertoTabosa/Playwright.git`
-- **Execution Command:** `npx playwright /e2e/filename`
+- **Execution Command:** `npx playwright /e2e/P1.spec.js`
 
 ## Development Environment
 
