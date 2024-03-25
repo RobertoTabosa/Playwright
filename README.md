@@ -1,23 +1,21 @@
 # Playwright Test Project
 
-Welcome to the Playwright test project by Roberto Tabosa.
+This repository contains a Playwright test project developed by Roberto Tabosa.
+
+## Project Information
+
+- **Clone Repository:** `git clone https://github.com/RobertoTabosa/Playwright.git`
+- **Execution Command:** `npx playwright /e2e/filename`
 
 ## Development Environment
 
-- Playwright v1.42.1
-- Node.js v18.16.0
-- Operating System: macOS Sonoma
+- **Playwright Version:** v1.42.1
+- **Node.js Version:** v18.16.0
+- **Operating System:** macOS Sonoma
 
-## Getting Started
+## Test Summary
 
-To get started with this project, follow these steps:
-
-1. Clone the repository:
-git clone https://github.com/RobertoTabosa/Playwright.git
-
-
-2. Execute the tests:
-npx playwright /e2e/P1.spec.js
+This script goes to [Allrecipes](https://www.allrecipes.com/) and checks the functionality of the "Find a recipe" search field.
 
 
 ## Author
