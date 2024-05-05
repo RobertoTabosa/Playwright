@@ -8,9 +8,9 @@ test("Allrecipes product search input", async ({ page }) => {
   //Variables
   const URL = "https://www.allrecipes.com/";
   const productName = "meat";
+  const homePage = new HomePage(page);
 
   //Go to page
-  const homePage = new HomePage(page);
   await homePage.goToHomePage(URL);
 
   //Check for the item
