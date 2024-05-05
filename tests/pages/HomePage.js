@@ -9,11 +9,11 @@ export default class HomePage {
   }
 
   async searchForProduct(productName) {
-    const productSearch = await this.page.locator('[id="mntl-search-form--open__search-input"]');
-    await productSearch.fill(productName);
+    this.page.getByPlaceholder('Find a recipe or ingredient').fill(productName);
 
     const searchButton = await this.page.waitForSelector('.mntl-search-form__button');
     await searchButton.click();
+    await expect(this.page.getByText('Search Results For')).toBeVisible();
   }
 
   async getTitleTextContents() {
