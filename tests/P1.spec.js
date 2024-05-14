@@ -58,10 +58,4 @@ test.describe('Allrecipes Project', () => {
     await menuPage.hoverAboutus();
   });
 
-    // test("Allrecipes Login", async({page})=>{
-
-    // });
-  
-  // });
-
 })
