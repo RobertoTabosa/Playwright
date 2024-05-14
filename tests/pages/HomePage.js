@@ -1,3 +1,5 @@
+import { test, expect } from '@playwright/test';
+
 export default class HomePage {
   constructor(page) {
     this.page = page;
@@ -6,6 +8,7 @@ export default class HomePage {
   async goToHomePage() {
     await this.page.goto("https://www.allrecipes.com/");
     //await this.page.waitForLoadState('networkidle');
+    expect (await this.page.title()).toBe('Allrecipes | Recipes, How-Tos, Videos and More');
   }
 
   async searchForProduct(productName) {
