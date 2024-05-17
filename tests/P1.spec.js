@@ -3,6 +3,7 @@
 import { test, expect } from '@playwright/test';
 import HomePage from './pages/HomePage';
 import MenuPage from './pages/MenuPage';
+import Login from './pages/Login';
 
 const URL = "https://www.allrecipes.com/";
 const productName = "meat";
@@ -14,7 +15,7 @@ test.beforeAll(async ({playwright}) => {
   )
 });
 
-test.beforeEach (async({page}, testInfo) => {
+test.beforeEach('test', async({page}, testInfo) => {
   console.log(`Running ${testInfo.titlePath}`);
   await page.goto(URL);
   const homePage = new HomePage(page);
@@ -58,4 +59,15 @@ test.describe('Allrecipes Project', () => {
     await menuPage.hoverAboutus();
   });
 
+  // For this test you will need create your own username and password and set it on .env file.
+  test("Allrecipes Login", async({page}, testInfo)=>{
+    const login = new Login(page);
+
+    const user = testInfo.project.use.env_var;
+    const password = testInfo.project.use.env_var2;
+    await login.LoadPageLogin();
+    await login.LoginEmailSuccess(user, password);
+  });
+
 })
+
