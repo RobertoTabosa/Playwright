@@ -23,6 +23,7 @@ export default class Login {
         await this.page.getByPlaceholder('yourname@example.com').press('Tab');
         await this.page.getByPlaceholder('Enter your password').fill(password);
         await this.page.getByRole('button', { name: 'Log in' }).click();
+        expect (await this.page.getByRole('button', {name: 'My Account', exact:true})).toBeVisible;
 
     }
 }
