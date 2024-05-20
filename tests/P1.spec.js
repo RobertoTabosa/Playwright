@@ -19,6 +19,7 @@ test.beforeEach('test', async({page}, testInfo) => {
   console.log(`Running ${testInfo.titlePath}`);
   await page.goto(URL);
   const homePage = new HomePage(page);
+  const login = new Login(page);
 });
 
 test.afterEach( async ({ page }, testInfo) => {
@@ -60,14 +61,31 @@ test.describe('Allrecipes Project', () => {
   });
 
   // For this test you will need create your own username and password and set it on .env file.
-  test("Allrecipes Login", async({page}, testInfo)=>{
-    const login = new Login(page);
+  test.describe.only('Tests scenarios login', () => {
+    test("Successfull login", async({page}, testInfo)=>{
+        const login = new Login(page);
+        const user = testInfo.project.use.user;
+        const password = testInfo.project.use.password;
+        await login.LoadPageLogin();
+        await login.LoginEmail(user, password);
+        await login.checkLoggedIn();
+    });
+    test('Failing login - with invalid username', async ({ page }, testInfo) => {
+      const login = new Login(page);
+      const inv_username = testInfo.project.use.inv_username;
+      const password = testInfo.project.use.password;
+      await login.LoadPageLogin();
+      await login.LoginEmail(inv_username, password); 
+      await login.checkInvalidCredentials();
+    });
 
-    const user = testInfo.project.use.env_var;
-    const password = testInfo.project.use.env_var2;
-    await login.LoadPageLogin();
-    await login.LoginEmailSuccess(user, password);
+    test('Failing login - with invalid password', async ({ page }, testInfo) => {
+      const login = new Login(page);
+      const user = testInfo.project.use.user;
+      const inv_password = testInfo.project.use.inv_password;
+      await login.LoadPageLogin();
+      await login.LoginEmail(user, inv_password); 
+      await login.checkInvalidCredentials();
+    });
   });
-
 })
-
