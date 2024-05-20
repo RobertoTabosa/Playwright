@@ -61,7 +61,7 @@ test.describe('Allrecipes Project', () => {
   });
 
   // For this test you will need create your own username and password and set it on .env file.
-  test.describe.only('Tests scenarios login', () => {
+  test.describe('Tests scenarios login', () => {
     test("Successfull login", async({page}, testInfo)=>{
         const login = new Login(page);
         const user = testInfo.project.use.user;
