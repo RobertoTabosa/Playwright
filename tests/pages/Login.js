@@ -17,13 +17,22 @@ export default class Login {
         await expect(this.loginGoogle).toBeVisible();
     }
 
-    async LoginEmailSuccess(user, password){
+    async LoginEmail(user, password){
         await this.loginEmail.click();
         await this.page.getByPlaceholder('yourname@example.com').fill(user);
         await this.page.getByPlaceholder('yourname@example.com').press('Tab');
         await this.page.getByPlaceholder('Enter your password').fill(password);
         await this.page.getByRole('button', { name: 'Log in' }).click();
-        expect (await this.page.getByRole('button', {name: 'My Account', exact:true})).toBeVisible;
+        //expect (await this.page.getByRole('button', {name: 'My Account', exact:true})).toBeVisible;
+    }
 
+    async checkLoggedIn () {
+        //await expext (this.page).toHaveURL ('https://www.allrecipes.com/?banner=login');
+        expect (await this.page.getByRole('button', {name: 'My Account', exact:true})).toBeVisible;
+    }
+
+    async checkInvalidCredentials () {
+        await expect (this.page.getByRole('heading', { name: 'Log in with email' })).toBeVisible();
+        await expect (this.page.getByRole('alert', {name: 'polite'})).toBeVisible;
     }
 }
